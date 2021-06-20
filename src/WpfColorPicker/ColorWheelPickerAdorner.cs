@@ -4,15 +4,15 @@ using System.Windows.Media;
 
 namespace Dsafa.WpfColorPicker
 {
-    internal class SaturationBrightnessPickerAdorner : Adorner
+    internal class ColorWheelPickerAdorner : Adorner
     {
         private static readonly DependencyProperty PositionProperty
-            = DependencyProperty.Register(nameof(Position), typeof(Point), typeof(SaturationBrightnessPickerAdorner), new FrameworkPropertyMetadata(new Point(), FrameworkPropertyMetadataOptions.AffectsRender));
+            = DependencyProperty.Register(nameof(Position), typeof(Point), typeof(ColorWheelPickerAdorner), new FrameworkPropertyMetadata(new Point(), FrameworkPropertyMetadataOptions.AffectsRender));
         private static readonly Brush FillBrush = Brushes.Transparent;
         private static readonly Pen InnerRingPen = new Pen(Brushes.White, 2);
         private static readonly Pen OuterRingPen = new Pen(Brushes.Black, 2);
 
-        internal SaturationBrightnessPickerAdorner(UIElement adornedElement)
+        internal ColorWheelPickerAdorner(UIElement adornedElement)
             : base(adornedElement)
         {
             IsHitTestVisible = false;

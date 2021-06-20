@@ -5,21 +5,21 @@ using System.Windows.Input;
 
 namespace Dsafa.WpfColorPicker
 {
-    internal partial class SaturationBrightnessPicker : UserControl
+    internal partial class ColorWheelPicker : UserControl
     {
         public static readonly DependencyProperty HueProperty 
-            = DependencyProperty.Register(nameof(Hue), typeof(double), typeof(SaturationBrightnessPicker), new PropertyMetadata(0.0));
+            = DependencyProperty.Register(nameof(Hue), typeof(double), typeof(ColorWheelPicker), new PropertyMetadata(0.0));
         public static readonly DependencyProperty SaturationProperty 
-            = DependencyProperty.Register(nameof(Saturation), typeof(double), typeof(SaturationBrightnessPicker), new PropertyMetadata(0.0, OnSaturationChanged));
+            = DependencyProperty.Register(nameof(Saturation), typeof(double), typeof(ColorWheelPicker), new PropertyMetadata(0.0, OnSaturationChanged));
         public static readonly DependencyProperty BrightnessProperty 
-            = DependencyProperty.Register(nameof(Brightness), typeof(double), typeof(SaturationBrightnessPicker), new PropertyMetadata(0.0, OnBrightnessChanged));
-        private readonly SaturationBrightnessPickerAdorner _adorner;
+            = DependencyProperty.Register(nameof(Brightness), typeof(double), typeof(ColorWheelPicker), new PropertyMetadata(0.0, OnBrightnessChanged));
+        private readonly ColorWheelPickerAdorner _adorner;
 
-        public SaturationBrightnessPicker()
+        public ColorWheelPicker()
         {
             InitializeComponent();
-            _adorner = new SaturationBrightnessPickerAdorner(this);
-            Loaded += SaturationBrightnessPickerOnLoaded;
+            _adorner = new ColorWheelPickerAdorner(this);
+            Loaded += ColorWheelPickerOnLoaded;
         }
 
         public double Hue
@@ -64,7 +64,7 @@ namespace Dsafa.WpfColorPicker
 
         private static void OnSaturationChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
         {
-            var picker = (SaturationBrightnessPicker)o;
+            var picker = (ColorWheelPicker)o;
             var sat = (double)e.NewValue;
             var pos = picker._adorner.Position;
             picker._adorner.Position = new Point(sat * picker.ActualWidth, pos.Y);
@@ -72,13 +72,13 @@ namespace Dsafa.WpfColorPicker
 
         private static void OnBrightnessChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
         {
-            var picker = (SaturationBrightnessPicker)o;
+            var picker = (ColorWheelPicker)o;
             var bright = (double)e.NewValue;
             var pos = picker._adorner.Position;
             picker._adorner.Position = new Point(pos.X, (1 - bright) * picker.ActualHeight);
         }
 
-        private void SaturationBrightnessPickerOnLoaded(object sender, RoutedEventArgs e)
+        private void ColorWheelPickerOnLoaded(object sender, RoutedEventArgs e)
         {
             AdornerLayer.GetAdornerLayer(this).Add(_adorner);
             _adorner.Position = new Point(Saturation * ActualWidth, (1 - Brightness) * ActualHeight);

@@ -19,7 +19,7 @@
         </ResourceDictionary>
     </UserControl.Resources>
     <DockPanel>
-        <local:SaturationBrightnessPicker DockPanel.Dock="Left" 
+        <local:ColorWheelPicker DockPanel.Dock="Left" 
                                           Width="{Binding ElementName=colorPicker, Path=ActualHeight}" 
                                           Hue="{Binding Hue, Mode=OneWay}"
                                           Saturation="{Binding Saturation, Mode=TwoWay}"
