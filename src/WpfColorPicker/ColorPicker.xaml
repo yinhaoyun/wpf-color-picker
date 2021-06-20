@@ -9,7 +9,8 @@
              mc:Ignorable="d" 
              d:DesignHeight="380" d:DesignWidth="600"
              d:DataContext="{d:DesignInstance Type=local:ColorPickerViewModel, IsDesignTimeCreatable=True}"
-             x:Name="colorPicker">
+             x:Name="colorPicker"
+             Background="Black">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -34,6 +35,7 @@
                                   Color="{Binding Color, Mode=OneWay}"
                                   Alpha="{Binding Alpha, Mode=TwoWay}"/>
         -->
+        <!--
         <DockPanel HorizontalAlignment="Left" Margin="10, 0">
             <Grid DockPanel.Dock="Top">
                 <Grid.RowDefinitions>
@@ -120,6 +122,52 @@
                 
                 <TextBox Text="{Binding Color}" Grid.Row="14" Grid.Column="0" Grid.ColumnSpan="2" />
                 <local:EyeDropper Grid.Row="14" Grid.Column="2" HorizontalAlignment="Left" Margin="4,0" Background="Transparent" SelectedColor="{Binding Color, Mode=OneWayToSource}" />
+            </Grid>
+        </DockPanel>
+        -->
+        <DockPanel HorizontalAlignment="Left" Margin="10, 0">
+            <Grid VerticalAlignment="Center">
+                <Grid.Resources>
+                    <Style TargetType="{x:Type Label}" BasedOn="{StaticResource {x:Type Label}}">
+                        <Setter Property="VerticalAlignment" Value="Stretch"/>
+                        <Setter Property="VerticalContentAlignment" Value="Center"/>
+                        <Setter Property="FontSize" Value="25"/>
+                        <Setter Property="Foreground" Value="White"/>
+                    </Style>
+                    <GridLength x:Key="inputHeight">45</GridLength>
+                    <GridLength x:Key="inputMargin">30</GridLength>
+                </Grid.Resources>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="{StaticResource inputHeight}"/>
+                    <RowDefinition Height="{StaticResource inputMargin}"/>
+                    <RowDefinition Height="{StaticResource inputHeight}"/>
+                    <RowDefinition Height="{StaticResource inputMargin}"/>
+                    <RowDefinition Height="{StaticResource inputHeight}"/>
+                    <RowDefinition Height="15"/>
+                    <RowDefinition Height="{StaticResource inputHeight}"/>
+                    <RowDefinition Height="{StaticResource inputMargin}"/>
+                    <RowDefinition Height="{StaticResource inputHeight}"/>
+                    <RowDefinition Height="{StaticResource inputMargin}"/>
+                    <RowDefinition Height="{StaticResource inputHeight}"/>
+                    <RowDefinition Height="{StaticResource inputMargin}"/>
+                    <RowDefinition Height="{StaticResource inputHeight}"/>
+                    <RowDefinition Height="{StaticResource inputMargin}"/>
+                    <RowDefinition Height="{StaticResource inputHeight}"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="60"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Content="R" Grid.Row="6"/>
+                <Label Grid.Row="6" Grid.Column="1" Content="{Binding Red, Mode=TwoWay}"/>
+                
+                <Label Content="G" Grid.Row="8"/>
+                <Label Grid.Row="8" Grid.Column="1" Content="{Binding Green, Mode=TwoWay}"/>
+
+                <Label Content="B" Grid.Row="10"/>
+                <Label Grid.Row="10" Grid.Column="1" Content="{Binding Blue, Mode=TwoWay}"/>
             </Grid>
         </DockPanel>
     </DockPanel>
