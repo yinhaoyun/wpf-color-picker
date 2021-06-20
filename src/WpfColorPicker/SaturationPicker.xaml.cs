@@ -7,27 +7,27 @@ using System.Windows.Media;
 namespace Dsafa.WpfColorPicker
 {
     /// <summary>
-    /// Interaction logic for HuePicker.xaml
+    /// Interaction logic for SaturationPicker.xaml
     /// </summary>
-    internal partial class HuePicker : SliderPicker
+    internal partial class SaturationPicker : SliderPicker
     {
-        public static readonly DependencyProperty HueProperty
-            = DependencyProperty.Register(nameof(Hue), typeof(double), typeof(HuePicker), new PropertyMetadata(0.0, OnHueChanged));
+        public static readonly DependencyProperty SaturationProperty
+            = DependencyProperty.Register(nameof(Saturation), typeof(double), typeof(SaturationPicker), new PropertyMetadata(0.0, OnSaturationChanged));
 
-        public HuePicker()
+        public SaturationPicker()
         {
             InitializeComponent();
         }
 
-        public double Hue
+        public double Saturation
         {
-            get => (double)GetValue(HueProperty);
-            set => SetValue(HueProperty, value);
+            get => (double)GetValue(SaturationProperty);
+            set => SetValue(SaturationProperty, value);
         }
    
-        private static void OnHueChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
+        private static void OnSaturationChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
         {
-            var huePicker = (HuePicker)o;
+            var huePicker = (SaturationPicker)o;
             huePicker.UpdateAdorner((double)e.NewValue);
         }
 
@@ -48,9 +48,9 @@ namespace Dsafa.WpfColorPicker
 
         protected override void OnAdornerPositionChanged(double verticalPercent)
         {
-            Color c = hueGradients.GradientStops.GetColorAtOffset(verticalPercent);
+            Color c = saturationGradients.GradientStops.GetColorAtOffset(verticalPercent);
             AdornerColor = c;
-            Hue = c.GetHue();
+            Saturation = c.GetSaturation();
         }
     }
 }
