@@ -20,7 +20,7 @@
             <RowDefinition Height="10"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <local:ColorPicker Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" x:Name="colorPicker" Height="360"/>
+        <local:ColorPicker Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" x:Name="colorPicker" Height="187"/>
         <ItemsControl Grid.Row="2" Grid.Column="0" ItemsSource="{Binding ElementName=dialog, Path=Palette}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
