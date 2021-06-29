@@ -22,11 +22,12 @@
     <DockPanel>
         <local:ColorWheelPicker DockPanel.Dock="Left" 
                                           Width="{Binding ElementName=colorPicker, Path=ActualHeight}" 
-                                          Hue="{Binding Hue, Mode=OneWay}"
-                                          Saturation="{Binding Saturation, Mode=TwoWay}"
-                                          Brightness="{Binding Brightness, Mode=TwoWay}"/>
+                                          Hue="{Binding Hue, Mode=TwoWay}"
+                                          Saturation="{Binding Saturation, Mode=TwoWay}"/>
         <local:SaturationPicker DockPanel.Dock="Left" HorizontalAlignment="Left"
-                         Width="30" Saturation="{Binding Saturation, Mode=TwoWay}"/>
+                                          Width="30"
+                                          Saturation="{Binding Saturation, Mode=TwoWay}"
+                                          Hue="{Binding Hue, Mode=OneWay}"/>
 
         <!--
         <local:HuePicker DockPanel.Dock="Left" Margin="5, 0" HorizontalAlignment="Left"

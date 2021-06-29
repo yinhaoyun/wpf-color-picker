@@ -14,7 +14,7 @@
         <Rectangle.Fill>
             <LinearGradientBrush StartPoint="0,0" EndPoint="0,1" x:Name="saturationGradients">
                 <LinearGradientBrush.GradientStops>
-                    <GradientStop Color="#FF0000" Offset="0" />
+                    <GradientStop Offset="0" Color="{Binding Path=Hue, Mode=OneWay}"/>
                     <GradientStop Color="White" Offset="1" />
                 </LinearGradientBrush.GradientStops>
             </LinearGradientBrush>

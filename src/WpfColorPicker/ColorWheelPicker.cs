@@ -1,18 +1,20 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace Dsafa.WpfColorPicker
 {
     internal partial class ColorWheelPicker : UserControl
     {
         public static readonly DependencyProperty HueProperty 
-            = DependencyProperty.Register(nameof(Hue), typeof(double), typeof(ColorWheelPicker), new PropertyMetadata(0.0));
+            = DependencyProperty.Register(nameof(Hue), typeof(double), typeof(ColorWheelPicker), new PropertyMetadata(0.0, OnHueChanged));
         public static readonly DependencyProperty SaturationProperty 
             = DependencyProperty.Register(nameof(Saturation), typeof(double), typeof(ColorWheelPicker), new PropertyMetadata(0.0, OnSaturationChanged));
         public static readonly DependencyProperty BrightnessProperty 
-            = DependencyProperty.Register(nameof(Brightness), typeof(double), typeof(ColorWheelPicker), new PropertyMetadata(0.0, OnBrightnessChanged));
+            = DependencyProperty.Register(nameof(Brightness), typeof(double), typeof(ColorWheelPicker), new PropertyMetadata(0.0));
         private readonly ColorWheelPickerAdorner _adorner;
 
         public ColorWheelPicker()
@@ -70,7 +72,7 @@ namespace Dsafa.WpfColorPicker
             picker._adorner.Position = new Point(sat * picker.ActualWidth, pos.Y);
         }
 
-        private static void OnBrightnessChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
+        private static void OnHueChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
         {
             var picker = (ColorWheelPicker)o;
             var bright = (double)e.NewValue;
@@ -87,8 +89,34 @@ namespace Dsafa.WpfColorPicker
         private void Update(Point p)
         {
             _adorner.Position = p;
-            Saturation = p.X / ActualWidth;
-            Brightness = 1 - (p.Y / ActualHeight); // directions reversed
+            
+            Point center = new Point(ActualWidth / 2, ActualHeight / 2);
+            double R = ActualWidth / 2;
+            double deltaX = p.X - center.X;
+            double deltaY = p.Y - center.Y;
+            double degree = RadianToDegree(Math.Atan2(deltaY, deltaX));
+            double r = Math.Sqrt(Math.Pow(deltaX, 2) + Math.Pow(deltaY, 2));
+            double s = r / R;
+            Color color = ColorHelper.FromHSV(degree, s, 1);
+            Console.WriteLine($"Center={center}, p={p}, degree={degree}, s={s}, color={color}");
+            Hue = color.GetHue();
+            Saturation = color.GetSaturation();
+        }
+
+        private double RadianToDegree(double angle)
+        {
+            double degree = angle * (180.0 / Math.PI);
+            if (degree < 0)
+            {
+                degree = 360 + degree;
+            }
+            degree = 360 - degree;
+            return degree;
+        }
+
+        private double DegreeToRadian(double angle)
+        {
+            return Math.PI * angle / 180.0;
         }
     }
 }

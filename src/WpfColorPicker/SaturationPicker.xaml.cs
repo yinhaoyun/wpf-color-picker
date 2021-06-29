@@ -13,6 +13,8 @@ namespace Dsafa.WpfColorPicker
     {
         public static readonly DependencyProperty SaturationProperty
             = DependencyProperty.Register(nameof(Saturation), typeof(double), typeof(SaturationPicker), new PropertyMetadata(0.0, OnSaturationChanged));
+        public static readonly DependencyProperty HueProperty
+            = DependencyProperty.Register(nameof(Hue), typeof(double), typeof(SaturationPicker), new PropertyMetadata(0.0, OnHueChanged));
 
         public SaturationPicker()
         {
@@ -24,13 +26,22 @@ namespace Dsafa.WpfColorPicker
             get => (double)GetValue(SaturationProperty);
             set => SetValue(SaturationProperty, value);
         }
-   
-        private static void OnSaturationChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
+        public double Hue
         {
-            var huePicker = (SaturationPicker)o;
-            huePicker.UpdateAdorner((double)e.NewValue);
+            get => (double)GetValue(HueProperty);
+            set => SetValue(HueProperty, value);
         }
 
+        private static void OnSaturationChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
+        {
+            var saturationPicker = (SaturationPicker)o;
+            saturationPicker.UpdateAdorner((double)e.NewValue);
+        }
+        private static void OnHueChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
+        {
+            var saturationPicker = (SaturationPicker)o;
+            saturationPicker.saturationGradients.GradientStops[0].Color = ColorHelper.FromHSV((double)e.NewValue, 1, 1);
+        }
         private void UpdateAdorner(double hue)
         {
             double percent = hue / 360;
