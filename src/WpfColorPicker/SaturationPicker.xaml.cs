@@ -42,9 +42,9 @@ namespace Dsafa.WpfColorPicker
             var saturationPicker = (SaturationPicker)o;
             saturationPicker.saturationGradients.GradientStops[0].Color = ColorHelper.FromHSV((double)e.NewValue, 1, 1);
         }
-        private void UpdateAdorner(double hue)
+        private void UpdateAdorner(double saturation)
         {
-            double percent = hue / 360;
+            double percent = 1.0 - saturation;
 
             // Make it so that the arrow doesn't jump back to the top when it goes to the bottom
             Point mousePos = Mouse.GetPosition(this);
@@ -54,7 +54,7 @@ namespace Dsafa.WpfColorPicker
             }
 
             AdornerVerticalPercent = percent;
-            AdornerColor = ColorHelper.FromHSV(hue, 1, 1);
+            AdornerColor = ColorHelper.FromHSV(Hue, saturation, 1);
         }
 
         protected override void OnAdornerPositionChanged(double verticalPercent)
