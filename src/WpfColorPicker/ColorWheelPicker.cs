@@ -16,6 +16,8 @@ namespace Dsafa.WpfColorPicker
         public static readonly DependencyProperty BrightnessProperty 
             = DependencyProperty.Register(nameof(Brightness), typeof(double), typeof(ColorWheelPicker), new PropertyMetadata(0.0));
         private readonly ColorWheelPickerAdorner _adorner;
+        private Point mPoint = new Point();
+        private Point mCenterPoint = new Point();
 
         public ColorWheelPicker()
         {
@@ -40,6 +42,23 @@ namespace Dsafa.WpfColorPicker
         {
             get => (double)GetValue(BrightnessProperty);
             set => SetValue(BrightnessProperty, value);
+        }
+
+        public Point CurrentPoint
+        {
+            get
+            {
+                mCenterPoint.X = ActualWidth / 2;
+                mCenterPoint.Y = ActualHeight / 2;
+
+                double theta = -Hue / 57.5; // TODO: Somehow I don't know the formula
+                double r = Saturation * mCenterPoint.X;
+
+                mPoint.X = mCenterPoint.X + r * Math.Cos(theta);
+                mPoint.Y = mCenterPoint.Y + r * Math.Sin(theta);
+
+                return mPoint;
+            }
         }
 
         protected override void OnMouseMove(MouseEventArgs e)
@@ -69,7 +88,7 @@ namespace Dsafa.WpfColorPicker
             var picker = (ColorWheelPicker)o;
             var sat = (double)e.NewValue;
             var pos = picker._adorner.Position;
-            picker._adorner.Position = new Point(sat * picker.ActualWidth, pos.Y);
+            picker._adorner.Position = picker.CurrentPoint;
         }
 
         private static void OnHueChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
@@ -77,7 +96,7 @@ namespace Dsafa.WpfColorPicker
             var picker = (ColorWheelPicker)o;
             var bright = (double)e.NewValue;
             var pos = picker._adorner.Position;
-            picker._adorner.Position = new Point(pos.X, (1 - bright) * picker.ActualHeight);
+            picker._adorner.Position = picker.CurrentPoint;
         }
 
         private void ColorWheelPickerOnLoaded(object sender, RoutedEventArgs e)
@@ -88,8 +107,7 @@ namespace Dsafa.WpfColorPicker
 
         private void Update(Point p)
         {
-            _adorner.Position = p;
-            
+            //_adorner.Position = p;
             Point center = new Point(ActualWidth / 2, ActualHeight / 2);
             double R = ActualWidth / 2;
             double deltaX = p.X - center.X;
@@ -98,7 +116,7 @@ namespace Dsafa.WpfColorPicker
             double r = Math.Sqrt(Math.Pow(deltaX, 2) + Math.Pow(deltaY, 2));
             double s = r / R;
             Color color = ColorHelper.FromHSV(degree, s, 1);
-            Console.WriteLine($"Center={center}, p={p}, degree={degree}, s={s}, color={color}");
+            Console.WriteLine($"Update: Center={center}, p={p}, degree={degree}, s={s}, color={color}");
             Hue = color.GetHue();
             Saturation = color.GetSaturation();
         }
