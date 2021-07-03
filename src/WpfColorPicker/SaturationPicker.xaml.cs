@@ -47,11 +47,11 @@ namespace Dsafa.WpfColorPicker
             double percent = 1.0 - saturation;
 
             // Make it so that the arrow doesn't jump back to the top when it goes to the bottom
-            Point mousePos = Mouse.GetPosition(this);
-            if (percent == 0 && ActualHeight - mousePos.Y < 1)
-            {
-                percent = 1;
-            }
+            //Point mousePos = Mouse.GetPosition(this);
+            //if (percent == 0 && ActualHeight - mousePos.Y < 1)
+            //{
+            //    percent = 1;
+            //}
 
             AdornerVerticalPercent = percent;
             AdornerColor = ColorHelper.FromHSV(Hue, saturation, 1);
