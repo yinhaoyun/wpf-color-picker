@@ -80,6 +80,9 @@
       <DependentUpon>EyeDropperWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="EyeDropperWindowAdorner.cs" />
+    <Compile Include="BrightnessPicker.xaml.cs">
+      <DependentUpon>BrightnessPicker.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SaturationPicker.xaml.cs">
       <DependentUpon>SaturationPicker.xaml</DependentUpon>
     </Compile>
@@ -142,6 +145,10 @@
     <Page Include="EyeDropperWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BrightnessPicker.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="SaturationPicker.xaml">
       <Generator>MSBuild:Compile</Generator>
