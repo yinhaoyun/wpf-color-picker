@@ -102,7 +102,7 @@ namespace Dsafa.WpfColorPicker
         private void ColorWheelPickerOnLoaded(object sender, RoutedEventArgs e)
         {
             AdornerLayer.GetAdornerLayer(this).Add(_adorner);
-            _adorner.Position = new Point(Saturation * ActualWidth, (1 - Brightness) * ActualHeight);
+            _adorner.Position = CurrentPoint;
         }
 
         private void Update(Point p)
