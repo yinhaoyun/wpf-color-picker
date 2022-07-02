@@ -57,6 +57,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BrightnessPickerHorizontal.xaml.cs">
+      <DependentUpon>BrightnessPickerHorizontal.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ColorHelper.cs" />
     <Compile Include="ColorPicker.xaml.cs">
       <DependentUpon>ColorPicker.xaml</DependentUpon>
@@ -89,6 +92,11 @@
     <Compile Include="HuePicker.xaml.cs">
       <DependentUpon>HuePicker.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SaturationPickerHorizotal.xaml.cs">
+      <DependentUpon>SaturationPickerHorizotal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SliderPickerAdornerHorizontal.cs" />
+    <Compile Include="SliderPickerHorizontal.cs" />
     <Compile Include="SliderPicker.cs" />
     <Compile Include="SliderPickerAdorner.cs" />
     <Compile Include="ColorNumericInput.xaml.cs">
@@ -126,6 +134,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="BrightnessPickerHorizontal.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="ColorPicker.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -167,6 +179,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SaturationBrightnessPicker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SaturationPickerHorizotal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

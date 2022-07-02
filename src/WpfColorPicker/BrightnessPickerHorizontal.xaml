@@ -1,0 +1,23 @@
+﻿<local:SliderPickerHorizontal x:Class="Dsafa.WpfColorPicker.BrightnessPickerHorizontal"
+             x:ClassModifier="internal"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Dsafa.WpfColorPicker"
+             mc:Ignorable="d" 
+             d:DesignHeight="20" d:DesignWidth="274"
+             Background="Transparent" 
+             Padding="0, 0, 0, 0"
+             SnapsToDevicePixels="True">
+    <Rectangle RadiusX="8" RadiusY="8" Width="{Binding Path=ActualWidth}">
+        <Rectangle.Fill>
+            <LinearGradientBrush StartPoint="1,0" EndPoint="0,0" x:Name="brightnessGradients">
+                <LinearGradientBrush.GradientStops>
+                    <GradientStop Offset="0" Color="Red"/>
+                    <GradientStop Color="Black" Offset="1" />
+                </LinearGradientBrush.GradientStops>
+            </LinearGradientBrush>
+        </Rectangle.Fill>
+    </Rectangle>
+</local:SliderPickerHorizontal>

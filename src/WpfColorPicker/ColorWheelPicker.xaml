@@ -9,14 +9,14 @@
              xmlns:effects="http://gu.se/Geometry"
              mc:Ignorable="d" 
              d:DesignHeight="187" d:DesignWidth="187"
-             Background="Black"
+             Background="Transparent"
              x:Name="colorWheelPicker"
              SnapsToDevicePixels="True">
     <UserControl.Resources>
         <converters:HueToColorConverter x:Key="toHue"/>
     </UserControl.Resources>
-    <Ellipse Width="187"
-             Height="187"
+    <Ellipse Width="{Binding ElementName=colorWheelPicker, Path=ActualWidth}"
+             Height="{Binding ElementName=colorWheelPicker, Path=ActualHeight}"
              HorizontalAlignment="Center"
              Fill="White">
         <Ellipse.Effect>

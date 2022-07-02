@@ -7,10 +7,10 @@
              xmlns:converters="clr-namespace:Dsafa.WpfColorPicker.Converters"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d" 
-             d:DesignHeight="187" d:DesignWidth="300"
+             d:DesignHeight="555" d:DesignWidth="1000"
              d:DataContext="{d:DesignInstance Type=local:ColorPickerViewModel, IsDesignTimeCreatable=True}"
              x:Name="colorPicker"
-             Background="Black">
+             Background="{Binding ElementName=colorPicker, Path=Background}">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -19,22 +19,89 @@
             <converters:UnitToPercentConverter x:Key="toPercentConverter"/>
         </ResourceDictionary>
     </UserControl.Resources>
-    <DockPanel>
-        <local:ColorWheelPicker DockPanel.Dock="Left" 
-                                          Width="{Binding ElementName=colorPicker, Path=ActualHeight}" 
+    <Canvas>
+        <Canvas.Resources>
+            <!--
+            <Style TargetType="{x:Type Label}" BasedOn="{StaticResource {x:Type Label}}">
+                <Setter Property="VerticalAlignment" Value="Stretch"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="Foreground" Value="Gray"/>
+            </Style>
+            -->
+            <Style x:Key="RgbTitle" TargetType="Label">
+                <Setter Property="VerticalAlignment" Value="Stretch"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="Foreground" Value="#5a5a5a"/>
+            </Style>
+            <Style x:Key="RgbValue" TargetType="Label">
+                <Setter Property="VerticalAlignment" Value="Stretch"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="Foreground" Value="#9f9f9f"/>
+            </Style>
+        </Canvas.Resources>
+
+        <local:ColorWheelPicker Canvas.Left="0" Canvas.Top="0"
+                                          Width="252"
+                                          Height="252" 
                                           Hue="{Binding Hue, Mode=TwoWay}"
                                           Saturation="{Binding Saturation, Mode=TwoWay}"/>
-        <local:SaturationPicker DockPanel.Dock="Left" HorizontalAlignment="Left"
-                                          Width="30"
+
+        <Border Background="#181818" Canvas.Left="300" Canvas.Top="0"
+                Width="328" Height="321"
+                CornerRadius="20"/>
+        <Label Content="Saturation" Canvas.Left="325" Canvas.Top="120" Foreground="White" FontSize="16" Padding="0, 0"/>
+        <local:SaturationPickerHorizontal Canvas.Left="325" Canvas.Top="150"
+                                          Width="280" Height="13"
                                           Saturation="{Binding Saturation, Mode=TwoWay}"
                                           Hue="{Binding Hue, Mode=OneWay}"/>
 
-        <local:BrightnessPicker DockPanel.Dock="Left" HorizontalAlignment="Left"
-                                          Width="30"
+        <Label Content="Brightness" Canvas.Left="325" Canvas.Top="200" Foreground="White" FontSize="16" Padding="0, 0"/>
+        <local:BrightnessPickerHorizontal Canvas.Left="325" Canvas.Top="230"
+                                          Width="280" Height="13"
                                           Brightness="{Binding Brightness, Mode=TwoWay}"
                                           Saturation="{Binding Saturation, Mode=OneWay}"
                                           Hue="{Binding Hue, Mode=OneWay}"/>
 
+        <Border Canvas.Left="15" Canvas.Top="293"
+                Width="70" Height="28"
+                CornerRadius="5"
+                Background="#191919"
+                />
+        <Border Canvas.Left="100" Canvas.Top="293"
+                Width="70" Height="28"
+                CornerRadius="5"
+                Background="#191919"
+                />
+        <Border Canvas.Left="185" Canvas.Top="293"
+                Width="70" Height="28"
+                CornerRadius="5"
+                Background="#191919"
+                />
+        <Label Canvas.Left="18" Canvas.Top="293"
+               Style="{StaticResource RgbTitle}"
+               Content="R"/>
+        <Label Canvas.Left="40" Canvas.Top="293"
+               Style="{StaticResource RgbValue}"
+               Content="{Binding Red, Mode=TwoWay}" />
+
+        <Label Canvas.Left="108" Canvas.Top="293"
+               Style="{StaticResource RgbTitle}"
+               Content="G"/>
+        <Label Canvas.Left="130" Canvas.Top="293"
+               Style="{StaticResource RgbValue}"
+               Content="{Binding Green, Mode=TwoWay}"/>
+
+        <Label Canvas.Left="193" Canvas.Top="293"
+               Style="{StaticResource RgbTitle}"
+               Content="B"/>
+        <Label Canvas.Left="215" Canvas.Top="293" 
+               Style="{StaticResource RgbValue}"
+               Content="{Binding Blue, Mode=TwoWay}"/>
         <!--
         <local:HuePicker DockPanel.Dock="Left" Margin="5, 0" HorizontalAlignment="Left"
                          Width="50" Hue="{Binding Hue, Mode=TwoWay}"/>
@@ -132,41 +199,5 @@
             </Grid>
         </DockPanel>
         -->
-        <DockPanel HorizontalAlignment="Left" Margin="10, 0">
-            <Grid VerticalAlignment="Center">
-                <Grid.Resources>
-                    <Style TargetType="{x:Type Label}" BasedOn="{StaticResource {x:Type Label}}">
-                        <Setter Property="VerticalAlignment" Value="Stretch"/>
-                        <Setter Property="VerticalContentAlignment" Value="Center"/>
-                        <Setter Property="FontSize" Value="25"/>
-                        <Setter Property="Foreground" Value="White"/>
-                    </Style>
-                    <GridLength x:Key="inputHeight">25</GridLength>
-                    <GridLength x:Key="inputMargin">20</GridLength>
-                </Grid.Resources>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="60"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
-
-                <Label Content="R" Grid.Row="2"/>
-                <Label Grid.Row="2" Grid.Column="1" Content="{Binding Red, Mode=TwoWay}"/>
-                
-                <Label Content="G" Grid.Row="4"/>
-                <Label Grid.Row="4" Grid.Column="1" Content="{Binding Green, Mode=TwoWay}"/>
-
-                <Label Content="B" Grid.Row="6"/>
-                <Label Grid.Row="6" Grid.Column="1" Content="{Binding Blue, Mode=TwoWay}"/>
-            </Grid>
-        </DockPanel>
-    </DockPanel>
+    </Canvas>
 </UserControl>
