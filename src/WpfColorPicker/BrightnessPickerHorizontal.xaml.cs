@@ -82,7 +82,7 @@ namespace Dsafa.WpfColorPicker
 
         protected override void OnAdornerPositionChanged(double verticalPercent)
         {
-            Color c = brightnessGradients.GradientStops.GetColorAtOffset(verticalPercent);
+            Color c = brightnessGradients.GradientStops.GetColorAtOffset(1 - verticalPercent);
             AdornerColor = c;
             Brightness = c.GetBrightness();
         }

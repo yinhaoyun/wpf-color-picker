@@ -55,7 +55,7 @@ namespace Dsafa.WpfColorPicker
 
         private void UpdateAdorner(Point mousePos)
         {
-            double verticalPercent = (ActualWidth - mousePos.X) / ActualWidth;
+            double verticalPercent = mousePos.X / ActualWidth;
             _adorner.VerticalPercent = verticalPercent;
             OnAdornerPositionChanged(verticalPercent);
         }
