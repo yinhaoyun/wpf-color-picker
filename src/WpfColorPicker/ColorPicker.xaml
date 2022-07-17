@@ -33,15 +33,17 @@
                 <Setter Property="VerticalAlignment" Value="Stretch"/>
                 <Setter Property="VerticalContentAlignment" Value="Center"/>
                 <Setter Property="HorizontalAlignment" Value="Center"/>
-                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="FontSize" Value="15.75"/>
+                <Setter Property="FontFamily" Value="Microsoft YaHei UI"/>
                 <Setter Property="Foreground" Value="#5a5a5a"/>
             </Style>
             <Style x:Key="RgbValue" TargetType="Label">
                 <Setter Property="VerticalAlignment" Value="Stretch"/>
                 <Setter Property="VerticalContentAlignment" Value="Center"/>
                 <Setter Property="HorizontalAlignment" Value="Center"/>
-                <Setter Property="FontSize" Value="16"/>
-                <Setter Property="Foreground" Value="#9f9f9f"/>
+                <Setter Property="FontSize" Value="15.75"/>
+                <Setter Property="FontFamily" Value="Microsoft YaHei UI"/>
+                <Setter Property="Foreground" Value="#a0a0a0"/>
             </Style>
         </Canvas.Resources>
 
@@ -54,13 +56,13 @@
         <Border Background="#181818" Canvas.Left="323"
                 Width="328" Height="321"
                 CornerRadius="20"/>
-        <Label Content="Saturation" Canvas.Left="348" Canvas.Top="162" Foreground="White" FontSize="16" Padding="0, 0"/>
+        <Label Content="Saturation" Canvas.Left="348" Canvas.Top="162" Foreground="#f0f0f0" FontSize="17.5" FontFamily="Calbri" Padding="0, 0"/>
         <local:SaturationPickerHorizontal Canvas.Left="348" Canvas.Top="192"
                                           Width="280" Height="13"
                                           Saturation="{Binding Saturation, Mode=TwoWay}"
                                           Hue="{Binding Hue, Mode=OneWay}"/>
 
-        <Label Content="Brightness" Canvas.Left="348" Canvas.Top="242" Foreground="White" FontSize="16" Padding="0, 0"/>
+        <Label Content="Brightness" Canvas.Left="348" Canvas.Top="242" Foreground="#f0f0f0" FontSize="17.5" FontFamily="Calbri" Padding="0, 0"/>
         <local:BrightnessPickerHorizontal Canvas.Left="348" Canvas.Top="274"
                                           Width="280" Height="13"
                                           Brightness="{Binding Brightness, Mode=TwoWay}"
