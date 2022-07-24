@@ -8,13 +8,14 @@
              xmlns:converters="clr-namespace:Dsafa.WpfColorPicker.Converters"
              xmlns:effects="http://gu.se/Geometry"
              mc:Ignorable="d" 
-             d:DesignHeight="187" d:DesignWidth="187"
+             d:DesignHeight="249" d:DesignWidth="249"
              Background="Transparent"
-             x:Name="colorWheelPicker"
-             SnapsToDevicePixels="True">
+             x:Name="colorWheelPicker">
     <UserControl.Resources>
         <converters:HueToColorConverter x:Key="toHue"/>
     </UserControl.Resources>
+    <Image x:Name="color_wheel_png" Source="color_wheel.png" Stretch="None"/>
+    <!--
     <Ellipse Width="{Binding ElementName=colorWheelPicker, Path=ActualWidth}"
              Height="{Binding ElementName=colorWheelPicker, Path=ActualHeight}"
              HorizontalAlignment="Center"
@@ -24,4 +25,5 @@
                                         InnerSaturation="{Binding ElementName=InnerSaturation, Path=Value}" />
         </Ellipse.Effect>
     </Ellipse>
+    -->
 </UserControl>

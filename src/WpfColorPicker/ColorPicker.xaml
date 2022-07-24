@@ -48,8 +48,8 @@
         </Canvas.Resources>
 
         <local:ColorWheelPicker Canvas.Left="0" Canvas.Top="0"
-                                          Width="252"
-                                          Height="252" 
+                                          Width="251"
+                                          Height="249" 
                                           Hue="{Binding Hue, Mode=TwoWay}"
                                           Saturation="{Binding Saturation, Mode=TwoWay}"/>
 
