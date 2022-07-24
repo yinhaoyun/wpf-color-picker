@@ -35,16 +35,17 @@ namespace Dsafa.WpfColorPicker
         private static void OnSaturationChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
         {
             var saturationPicker = (SaturationPickerHorizontal)o;
-            saturationPicker.UpdateAdorner((double)e.NewValue);
+            saturationPicker.UpdateAdorner();
         }
         private static void OnHueChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
         {
             var saturationPicker = (SaturationPickerHorizontal)o;
             saturationPicker.saturationGradients.GradientStops[0].Color = ColorHelper.FromHSV((double)e.NewValue, 1, 1);
+            saturationPicker.UpdateAdorner();
         }
-        private void UpdateAdorner(double saturation)
+        private void UpdateAdorner()
         {
-            double percent = saturation;
+            double percent = Saturation;
 
             // Make it so that the arrow doesn't jump back to the top when it goes to the bottom
             //Point mousePos = Mouse.GetPosition(this);
@@ -54,7 +55,7 @@ namespace Dsafa.WpfColorPicker
             //}
 
             AdornerVerticalPercent = percent;
-            AdornerColor = ColorHelper.FromHSV(Hue, saturation, 1);
+            AdornerColor = ColorHelper.FromHSV(Hue, Saturation, 1);
         }
 
         protected override void OnAdornerPositionChanged(double verticalPercent)
