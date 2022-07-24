@@ -53,7 +53,7 @@
                                           Hue="{Binding Hue, Mode=TwoWay}"
                                           Saturation="{Binding Saturation, Mode=TwoWay}"/>
 
-        <Border Background="#181818" Canvas.Left="323"
+        <Border Background="#181818" Canvas.Left="314" Canvas.Top="0"
                 Width="328" Height="321"
                 CornerRadius="20"/>
         <Label Content="Saturation" Canvas.Left="342" Canvas.Top="160" Foreground="#f0f0f0" FontSize="16" FontFamily="Calbri" Padding="0, 0"/>
