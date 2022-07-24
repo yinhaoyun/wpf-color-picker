@@ -56,64 +56,67 @@
         <Border Background="#181818" Canvas.Left="323"
                 Width="328" Height="321"
                 CornerRadius="20"/>
-        <Label Content="Saturation" Canvas.Left="348" Canvas.Top="162" Foreground="#f0f0f0" FontSize="17.5" FontFamily="Calbri" Padding="0, 0"/>
-        <local:SaturationPickerHorizontal Canvas.Left="348" Canvas.Top="192"
-                                          Width="280" Height="13"
+        <Label Content="Saturation" Canvas.Left="342" Canvas.Top="160" Foreground="#f0f0f0" FontSize="16" FontFamily="Calbri" Padding="0, 0"/>
+        <local:SaturationPickerHorizontal Canvas.Left="342" Canvas.Top="188"
+                                          Width="272" Height="13"
                                           Saturation="{Binding Saturation, Mode=TwoWay}"
                                           Hue="{Binding Hue, Mode=OneWay}"/>
 
-        <Label Content="Brightness" Canvas.Left="348" Canvas.Top="242" Foreground="#f0f0f0" FontSize="17.5" FontFamily="Calbri" Padding="0, 0"/>
-        <local:BrightnessPickerHorizontal Canvas.Left="348" Canvas.Top="274"
-                                          Width="280" Height="13"
+        <Label Content="Brightness" Canvas.Left="342" Canvas.Top="238" Foreground="#f0f0f0" FontSize="16" FontFamily="Calbri" Padding="0, 0"/>
+        <local:BrightnessPickerHorizontal Canvas.Left="343" Canvas.Top="269"
+                                          Width="272" Height="12"
                                           Brightness="{Binding Brightness, Mode=TwoWay}"
                                           Saturation="{Binding Saturation, Mode=OneWay}"
                                           Hue="{Binding Hue, Mode=OneWay}"/>
 
-        <Border Canvas.Left="6" Canvas.Top="299"
-                Width="70" Height="28"
+        <Border Canvas.Left="10" Canvas.Top="293"
+                Width="69" Height="28"
                 CornerRadius="5"
                 Background="#191919"
                 />
-        <Border Canvas.Left="90" Canvas.Top="299"
-                Width="70" Height="28"
+        <Border Canvas.Left="92" Canvas.Top="293"
+                Width="69" Height="28"
                 CornerRadius="5"
                 Background="#191919"
                 />
-        <Border Canvas.Left="176" Canvas.Top="299"
-                Width="70" Height="28"
+        <Border Canvas.Left="174" Canvas.Top="293"
+                Width="69" Height="28"
                 CornerRadius="5"
                 Background="#191919"
                 />
-        <Label Canvas.Left="6" Canvas.Top="299"
-               Padding="12,3"
+        <Label Canvas.Left="10" Canvas.Top="293"
+               BorderThickness="1" BorderBrush="Transparent"
+               Padding="10,3"
                Style="{StaticResource RgbTitle}"
                HorizontalContentAlignment="Center"
                Content="R"/>
-        <Label Canvas.Left="30" Canvas.Top="299"
+        <Label Canvas.Left="32" Canvas.Top="293"
                HorizontalContentAlignment="Center" Width="46"
-               Padding="3,2,3,2"
+               Padding="3"
                BorderThickness="1" BorderBrush="Transparent"
                Style="{StaticResource RgbValue}"
                Content="{Binding Red, Mode=TwoWay}" />
 
-        <Label Canvas.Left="90" Canvas.Top="299"
-               Padding="12,3"
+        <Label Canvas.Left="92" Canvas.Top="293"
+               BorderThickness="1" BorderBrush="Transparent"
+               Padding="10,3"
                Style="{StaticResource RgbTitle}"
                Content="G"/>
-        <Label Canvas.Left="114" Canvas.Top="299"
+        <Label Canvas.Left="114" Canvas.Top="293"
                HorizontalContentAlignment="Center" Width="46"
-               Padding="3,2,3,2"
+               Padding="3"
                BorderThickness="1" BorderBrush="Transparent"
                Style="{StaticResource RgbValue}"
                Content="{Binding Green, Mode=TwoWay}"/>
 
-        <Label Canvas.Left="176" Canvas.Top="299"
-               Padding="12,3"
+        <Label Canvas.Left="174" Canvas.Top="293"
+               BorderThickness="1" BorderBrush="Transparent"
+               Padding="10,3"
                Style="{StaticResource RgbTitle}"
                Content="B"/>
-        <Label Canvas.Left="200" Canvas.Top="299" 
+        <Label Canvas.Left="196" Canvas.Top="293" 
                HorizontalContentAlignment="Center" Width="46"
-               Padding="3,2,3,2"
+               Padding="3"
                BorderThickness="1" BorderBrush="Transparent"
                Style="{StaticResource RgbValue}"
                Content="{Binding Blue, Mode=TwoWay}"/>
