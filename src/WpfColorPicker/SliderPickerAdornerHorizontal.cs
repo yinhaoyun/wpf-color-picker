@@ -10,13 +10,15 @@ namespace Dsafa.WpfColorPicker
             = DependencyProperty.Register(nameof(VerticalPercent), typeof(double), typeof(SliderPickerAdornerHorizontal), new FrameworkPropertyMetadata(0.0, FrameworkPropertyMetadataOptions.AffectsRender));
         private static readonly DependencyProperty ColorProperty
             = DependencyProperty.Register(nameof(Color), typeof(Color), typeof(SliderPickerAdornerHorizontal), new FrameworkPropertyMetadata(Colors.Red, FrameworkPropertyMetadataOptions.AffectsRender));
-        private static readonly Pen Pen = new Pen(Brushes.Black, 1);
+        private Pen Pen;
         private Brush _brush = Brushes.Red;
 
         public SliderPickerAdornerHorizontal(UIElement adornedElement)
             : base(adornedElement)
         {
             IsHitTestVisible = false;
+            Brush borderColor = new SolidColorBrush(Color.FromRgb(90, 90, 90));
+            Pen = new Pen(borderColor, 0.75);
         }
 
         public double VerticalPercent
@@ -40,16 +42,17 @@ namespace Dsafa.WpfColorPicker
         protected override void OnRender(DrawingContext drawingContext)
         {
             base.OnRender(drawingContext);
-            var height = 13;
-            var x = ElementSize.Width * VerticalPercent;
-            var y = 6;
+            var height = 16;
+            var triangleWidth = 8;
+            var x = triangleWidth + (ElementSize.Width - triangleWidth * 2) * VerticalPercent;
+            var y = ActualHeight;
 
             var triangleGeometry = new StreamGeometry();
             using (var context = triangleGeometry.Open())
             {
                 context.BeginFigure(new Point(x, y), true, true);
-                context.LineTo(new Point(x - 6, y + height), true, false);
-                context.LineTo(new Point(x + 6, y + height), true, false);
+                context.LineTo(new Point(x - triangleWidth, y + height), true, false);
+                context.LineTo(new Point(x + triangleWidth, y + height), true, false);
             }
 
             var transformGroup = new TransformGroup();
