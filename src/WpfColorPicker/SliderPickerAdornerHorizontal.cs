@@ -45,7 +45,7 @@ namespace Dsafa.WpfColorPicker
             var height = 16;
             var triangleWidth = 8;
             var x = triangleWidth + (ElementSize.Width - triangleWidth * 2) * VerticalPercent;
-            var y = ActualHeight;
+            var y = 13;
 
             var triangleGeometry = new StreamGeometry();
             using (var context = triangleGeometry.Open())
