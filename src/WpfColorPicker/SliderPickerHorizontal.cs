@@ -10,9 +10,9 @@ namespace Dsafa.WpfColorPicker
     {
         private readonly SliderPickerAdornerHorizontal _adorner;
 
-        protected SliderPickerHorizontal()
+        protected SliderPickerHorizontal(bool drawBorder = true)
         {
-            _adorner = new SliderPickerAdornerHorizontal(this);
+            _adorner = new SliderPickerAdornerHorizontal(this, drawBorder);
             Loaded += PickerOnLoaded;
         }
 

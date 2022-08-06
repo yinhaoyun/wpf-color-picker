@@ -13,11 +13,11 @@ namespace Dsafa.WpfColorPicker
         private Pen Pen;
         private Brush _brush = Brushes.Red;
 
-        public SliderPickerAdornerHorizontal(UIElement adornedElement)
+        public SliderPickerAdornerHorizontal(UIElement adornedElement, bool drawBorder)
             : base(adornedElement)
         {
             IsHitTestVisible = false;
-            Brush borderColor = new SolidColorBrush(Color.FromRgb(90, 90, 90));
+            Brush borderColor = new SolidColorBrush(drawBorder ? Color.FromRgb(90, 90, 90) : Color.FromArgb(0, 90, 90, 90));
             Pen = new Pen(borderColor, 0.75);
         }
 

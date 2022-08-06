@@ -16,7 +16,7 @@ namespace Dsafa.WpfColorPicker
         public static readonly DependencyProperty HueProperty
             = DependencyProperty.Register(nameof(Hue), typeof(double), typeof(SaturationPickerHorizontal), new PropertyMetadata(0.0, OnHueChanged));
 
-        public SaturationPickerHorizontal()
+        public SaturationPickerHorizontal() : base(false)
         {
             InitializeComponent();
         }
