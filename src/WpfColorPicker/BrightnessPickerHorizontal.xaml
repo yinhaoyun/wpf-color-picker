@@ -9,7 +9,7 @@
              d:DesignHeight="20" d:DesignWidth="274"
              Background="Transparent" 
              Padding="0, 0, 0, 0"
-             SnapsToDevicePixels="True">
+             SnapsToDevicePixels="False">
     <Rectangle Width="{Binding Path=ActualWidth}" Stroke="#5a5a5a" StrokeThickness="0.75"
                Height="13" VerticalAlignment="Top"
                RadiusX="6" RadiusY="6">
