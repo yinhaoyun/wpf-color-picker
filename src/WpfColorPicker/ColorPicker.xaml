@@ -62,7 +62,7 @@
                                           Hue="{Binding Hue, Mode=OneWay}"/>
 
         <Label Content="Brightness" Canvas.Left="342" Canvas.Top="238" Foreground="#f0f0f0" FontSize="16" FontFamily="Calbri" Padding="0, 0"/>
-        <local:BrightnessPickerHorizontal Canvas.Left="343" Canvas.Top="269"
+        <local:BrightnessPickerHorizontal Canvas.Left="342" Canvas.Top="269"
                                           Width="272" Height="29"
                                           Brightness="{Binding Brightness, Mode=TwoWay}"
                                           Saturation="{Binding Saturation, Mode=OneWay}"
