@@ -10,8 +10,9 @@
              Background="Transparent" 
              Padding="0, 0, 0, 0"
              SnapsToDevicePixels="True">
-    <Rectangle RadiusX="8" RadiusY="8" Width="{Binding Path=ActualWidth}" Stroke="#5a5a5a" StrokeThickness="0"
-               Height="13" VerticalAlignment="Top">
+    <Rectangle Width="{Binding Path=ActualWidth}" Stroke="#5a5a5a" StrokeThickness="0"
+               Height="13" VerticalAlignment="Top"
+               RadiusX="6" RadiusY="6">
         <Rectangle.Fill>
             <LinearGradientBrush StartPoint="1,0" EndPoint="0,0" x:Name="saturationGradients">
                 <LinearGradientBrush.GradientStops>
