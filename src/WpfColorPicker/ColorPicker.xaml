@@ -48,10 +48,9 @@
         </Canvas.Resources>
 
         <local:ColorWheelPicker Canvas.Left="0" Canvas.Top="0"
-                                          Width="251"
-                                          Height="249" 
-                                          Hue="{Binding Hue, Mode=TwoWay}"
-                                          Saturation="{Binding Saturation, Mode=TwoWay}"/>
+                                Width="251" Height="251"
+                                Hue="{Binding Hue, Mode=TwoWay}"
+                                Saturation="{Binding Saturation, Mode=TwoWay}"/>
 
         <Border Background="#191919" Canvas.Left="314" Canvas.Top="0"
                 Width="328" Height="321"
