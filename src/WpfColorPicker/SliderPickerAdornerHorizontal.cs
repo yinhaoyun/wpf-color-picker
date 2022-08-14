@@ -42,8 +42,8 @@ namespace Dsafa.WpfColorPicker
         protected override void OnRender(DrawingContext drawingContext)
         {
             base.OnRender(drawingContext);
-            var height = 16;
-            var triangleWidth = 8;
+            var height = 14;
+            var triangleWidth = 7;
             var x = triangleWidth + (ElementSize.Width - triangleWidth * 2) * VerticalPercent;
             var y = 13;
 
