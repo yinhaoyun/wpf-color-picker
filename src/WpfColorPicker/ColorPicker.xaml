@@ -54,7 +54,7 @@
 
         <Border Background="#191919" Canvas.Left="314" Canvas.Top="0"
                 Width="328" Height="321"
-                CornerRadius="20"/>
+                CornerRadius="14"/>
         <Label Content="Saturation" Canvas.Left="342" Canvas.Top="160" Foreground="#f0f0f0" FontSize="16" FontFamily="Calbri" Padding="0, 0"/>
         <local:SaturationPickerHorizontal Canvas.Left="342" Canvas.Top="188"
                                           Width="272" Height="29"
